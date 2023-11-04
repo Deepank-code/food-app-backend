@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import userRoute from "./routes/user.routes.js";
 import mealRoute from "./routes/meal.routes.js";
 import orderRoute from "./routes/order.route.js";
@@ -15,7 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config();
 }
-
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL],
+    credentials: true,
+  })
+);
 mongoConnection();
 app.use(cookieParser());
 app.use("/api/v1/user", userRoute);
