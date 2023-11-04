@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config();
 }
-app.use();
+app.use(cors());
 mongoConnection();
 app.use(cookieParser());
 app.use("/api/v1/user", userRoute);
