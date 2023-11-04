@@ -16,12 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config();
 }
-app.use(
-  cors({
-    origin: [process.env.FRONTEND_URL],
-    credentials: true,
-  })
-);
+app.use();
 mongoConnection();
 app.use(cookieParser());
 app.use("/api/v1/user", userRoute);
